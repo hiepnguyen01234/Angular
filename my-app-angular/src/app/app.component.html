@@ -1,0 +1,117 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <p appChangeText></p>
+  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+  <b>{{todaydate | date:'d/M/y    '}}</b>
+  <b>{{todaydate | date:'shortTime'}}</b><br />
+  <b style="margin-left: 420px;">{{propertyService}}</b>
+</div>
+<div>
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav style="background-color: lavenderblush;" [mode]="side" #sidenav>
+      <p class="nav-content">Fuck You</p>
+    </mat-sidenav>
+    <mat-sidenav-content style="text-align: center;">
+      <p>
+        <button mat-button (click)="sidenav.toggle()">toggle</button>
+      </p>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+<div style="text-align: center;">
+  <!--<form #userlogin="ngForm" (ngSubmit)="onClickSubmit(userlogin.value)">
+    <input type="text" name="username" placeholder="user name" ngModel><br />
+    <input type="password" name="pwd" placeholder="password" ngModel><br />
+    <input type="submit" value="submit">
+  </form><br />-->
+  <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+    <input type="text" class="fortextbox" name="username" placeholder="user name" formControlName="username"><br />
+    <input type="password" class="fortextbox" name="pwd" placeholder="password" formControlName="pwd"><br />
+    <input type="submit" [disabled]="!formdata.valid" class="forsubmit" value="login">
+  </form><br />
+  <p>your input user name is:  {{username}}</p><br />
+</div>
+<div style="text-align:left">
+  <h1 style="background:lightblue">
+    the sub of title: {{subtitle}}
+  </h1>
+</div>
+<!--day la the selectors cua component heros-->
+<app-heroes></app-heroes>
+<div style="text-align:center;">
+  <h5>Please choice a month of year which you like best !</h5>
+  <select (change)="changemonths($event)">
+    <option *ngFor="let i of months">{{i}}</option>
+  </select>
+</div>
+<div style="text-align:center; background-color: lightgreen;">
+  <p *ngIf="is_available, then true_condition else false_condition"></p>
+  <ng-template #true_condition><p>this condition is true</p></ng-template>
+  <ng-template #false_condition><p>Data-binding test condition: this condition is false</p></ng-template>
+</div>
+<div style="margin-left: 600px;">
+<button (click)="myClickFunction($event)">Click Me</button>
+</div>
+<div style="margin-left: 1000px;">
+  <b>in here, i will test my pipe to know sqrt of 25</b>
+  <p>this is:   {{25 | sqrt}}</p>
+</div>
+<div style="text-align: center;">
+  <button routerLink="heroes">this button used routerLink</button><br />
+  <router-outlet></router-outlet>
+</div>
+<br />
+<br />
+<br />
+<h3>this result use Angular-HttpClient to display</h3>
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>username</th>
+      <th>phone</th>
+      <th>address</th>
+      <th>company</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of results">
+      <td>{{user.id}}</td>
+      <td>{{user.name}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.phone}}</td>
+      <td>
+        <p>- street: {{user.address.street}}</p>
+        <p>- city: {{user.address.city}}</p>
+        <p>- zipcode: {{user.address.zipcode}}</p>
+      </td>
+      <td>
+        <p>- name: {{user.company.name}}</p>
+        <p>- bs: {{user.company.bs}}</p>
+        <p>- catchPhrase: {{user.company.catchPhrase}}</p>
+      </td>
+    </tr>
+  </tbody>
+</table><br /><br />
+<div>
+    <button style="margin-bottom: 10px;" (click)="animate()">Button use animate</button>
+    <div [@myanimation]="state" class="rotate">
+      <img style="width: 340px; height: 82px;" src="https://static01.nyt.com/images/2018/07/15/opinion/sunday/15Dowd/merlin_141199179_ca0d9736-9ce8-4dac-9d43-358804261211-articleLarge.jpg?quality=75&auto=webp&disable=upscale" width="100" height="100">
+    </div>
+</div>
+<div style="margin-top: 150px;">
+    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>File</button>
+      <button mat-menu-item>Save As</button>
+    </mat-menu>
+</div>
+<mat-form-field>
+    <input matInput [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
