@@ -1,0 +1,11 @@
+div {
+    text-align:center;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 100px;
+    background-color: lightgray;
+    height: 80px;
+}
+button.mat-menu-item {
+    position: fixed;
+    top: 120px;
+}
