@@ -1,0 +1,15 @@
+<div>
+  <button (click)="onClick()">Return</button>
+  <table>
+    <thead>
+      <th>name</th>
+      <th>password</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of uList">
+        <td>{{item.name}}</td>
+        <td>{{item.pwd}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

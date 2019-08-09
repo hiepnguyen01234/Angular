@@ -1,0 +1,18 @@
+table {
+    text-align: center;
+    width: 500px;
+    padding: 5px 5px 5px 5px;
+    position: relative;
+    left: 380px;
+}
+table th, td {
+    border: 1px solid black;
+}
+button {
+    background-color: lightgreen;
+    position: relative;
+    left: 45%;
+}
+button:hover {
+    background-color: lightpink;
+}
